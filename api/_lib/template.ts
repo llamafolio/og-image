@@ -208,7 +208,7 @@ export function getHtml(parsedReq: ParsedRequest) {
             <body>
                 <div class="container">
                     <div class="header">
-                        <img src="https://llamafolio.com/static/images/og-image-service/llamafolio-logo.svg" class="logo">
+                        ${getImage(images[0], '350', '65', 'logo')}
                     </div>
 
                     <div class="main">
@@ -236,16 +236,12 @@ export function getHtml(parsedReq: ParsedRequest) {
     `;
 }
 
-// function getImage(src: string, width ='auto', height = '225') {
-//     return `<img
-//         class="logo"
-//         alt="Generated Image"
-//         src="${sanitizeHtml(src)}"
-//         width="${sanitizeHtml(width)}"
-//         height="${sanitizeHtml(height)}"
-//     />`
-// }
-
-// function getPlusSign(i: number) {
-//     return i === 0 ? '' : '<div class="plus">+</div>';
-// }
+function getImage(src: string, width ='auto', height = 'auto', className = 'logo') {
+    return `<img
+        class="${sanitizeHtml(className)}"
+        src="${sanitizeHtml(src)}"
+        width="${sanitizeHtml(width)}"
+        height="${sanitizeHtml(height)}"
+        onerror="this.onerror=null; this.remove();"
+    />`
+}

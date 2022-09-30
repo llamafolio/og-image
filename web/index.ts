@@ -139,18 +139,12 @@ const markdownOptions: DropdownOption[] = [
 ];
 
 const imageLightOptions: DropdownOption[] = [
-    { text: 'Vercel', value: 'https://assets.vercel.com/image/upload/front/assets/design/vercel-triangle-black.svg' },
-    { text: 'Next.js', value: 'https://assets.vercel.com/image/upload/front/assets/design/nextjs-black-logo.svg' },
-    { text: 'Hyper', value: 'https://assets.vercel.com/image/upload/front/assets/design/hyper-color-logo.svg' },
+    { text: 'LlamaFolio', value: 'https://llamafolio.com/static/images/og-image-service/llamafolio-logo.svg' },
 ];
 
 const imageDarkOptions: DropdownOption[] = [
-
-    { text: 'Vercel', value: 'https://assets.vercel.com/image/upload/front/assets/design/vercel-triangle-white.svg' },
-    { text: 'Next.js', value: 'https://assets.vercel.com/image/upload/front/assets/design/nextjs-white-logo.svg' },
-    { text: 'Hyper', value: 'https://assets.vercel.com/image/upload/front/assets/design/hyper-bw-logo.svg' },
+    { text: 'LlamaFolio', value: 'https://llamafolio.com/static/images/og-image-service/llamafolio-logo.svg' },
 ];
-
 
 interface AppState extends ParsedRequest {
     loading: boolean;
@@ -179,7 +173,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
     const {
         fileType = 'jpeg',
         theme = 'light',
-        md = true,
+        md = false,
         text = '**Hello** World',
         images=[imageLightOptions[0].value],
         widths=[],
@@ -194,9 +188,11 @@ const App = (_: any, state: AppState, setState: SetState) => {
     const mdValue = md ? '1' : '0';
     const imageOptions = theme === 'light' ? imageLightOptions : imageDarkOptions;
     const url = new URL(window.location.origin);
+
     url.pathname = `${encodeURIComponent(text)}.${fileType}`;
     url.searchParams.append('theme', theme);
     url.searchParams.append('md', mdValue);
+
     for (let image of images) {
         url.searchParams.append('images', image);
     }
@@ -232,6 +228,21 @@ const App = (_: any, state: AppState, setState: SetState) => {
                         value: fileType,
                         onchange: (val: FileType) => setLoadingState({ fileType: val })
                     })
+                }),
+                H(Field, {
+                    label: 'Logo',
+                    input: H('div',
+                        H(Dropdown, {
+                            options: imageOptions,
+                            value: imageOptions[selectedImageIndex].value,
+                            onchange: (val: string) =>  {
+                                let clone = [...images];
+                                clone[0] = val;
+                                const selected = imageOptions.map(o => o.value).indexOf(val);
+                                setLoadingState({ images: clone, selectedImageIndex: selected });
+                            }
+                        }),
+                    ),
                 }),
                 H(Field, {
                     label: 'Text Type',
