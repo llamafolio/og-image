@@ -2,6 +2,7 @@ import { readFileSync } from 'fs';
 import { marked } from 'marked';
 import { sanitizeHtml } from './sanitizer';
 import { ParsedRequest } from './types';
+import { CSSReset } from "./css-reset";
 
 const twemoji = require('twemoji');
 const twOptions = { folder: 'svg', ext: '.svg' };
@@ -44,15 +45,7 @@ function getCss(theme: string, fontSize: string) {
             src: url(data:font/woff2;charset=utf-8;base64,${mono})  format("woff2");
         }
 
-        *, *::before, *::after {
-            border-width: 0;
-            border-style: solid;
-            box-sizing: border-box;
-        }
-
-        body, blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
-            margin: 0;
-        }
+        ${CSSReset}
 
         body {
             background: ${background};
