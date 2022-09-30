@@ -195,43 +195,45 @@ function getCss(theme: string, fontSize: string) {
 
 export function getHtml(parsedReq: ParsedRequest) {
     const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
-    console.log(getCss(theme, fontSize))
-    return `<!DOCTYPE html>
-<html>
-    <meta charset="utf-8">
-    <title>Generated Image</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        ${getCss(theme, fontSize)}
-    </style>
-    <body>
-        <div class="container">
-            <div class="header">
-                <img src="https://llamafolio.com/static/images/og-image-service/llamafolio-logo.svg" class="logo">
-            </div>
 
-            <div class="main">
-                <p class="content-title">Wallet Balance</p>
+    return `
+        <!DOCTYPE html>
+        <html>
+            <meta charset="utf-8">
+            <title>Generated Image</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <style>
+                ${getCss(theme, fontSize)}
+            </style>
+            <body>
+                <div class="container">
+                    <div class="header">
+                        <img src="https://llamafolio.com/static/images/og-image-service/llamafolio-logo.svg" class="logo">
+                    </div>
 
-                <div class="content-container">
-                    <p class="content-value">
-                        <span class="content-value-symbol">$</span>5.65b
-                    </p>
+                    <div class="main">
+                        <p class="content-title">Wallet Balance</p>
 
-                    <div class="content-value-container">
-                        <p class="content-value-change">24 hour change</p>
-                        <p class="content-value-percent">+ 1.65%</p>
+                        <div class="content-container">
+                            <p class="content-value">
+                                <span class="content-value-symbol">$</span>5.65b
+                            </p>
+
+                            <div class="content-value-container">
+                                <p class="content-value-change">24 hour change</p>
+                                <p class="content-value-percent">+ 1.65%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer">
+                        <img src="https://llamafolio.com/static/images/og-image-service/info-icon.svg" class="footer-icon">
+                        <p class="footer-description">LlamaFolio is committed to transparency &amp; proving accurate data without advertisements or sponsored content. Learn more at: llamafolio.com</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="footer">
-                <img src="https://llamafolio.com/static/images/og-image-service/info-icon.svg" class="footer-icon">
-                <p class="footer-description">LlamaFolio is committed to transparency &amp; proving accurate data without advertisements or sponsored content. Learn more at: llamafolio.com</p>
-            </div>
-        </div>
-    </body>
-</html>`;
+            </body>
+        </html>
+    `;
 }
 
 // function getImage(src: string, width ='auto', height = '225') {

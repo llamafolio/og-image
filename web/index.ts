@@ -94,7 +94,7 @@ interface FieldProps {
 const Field = ({ label, input }: FieldProps) => {
     return H('div',
         { className: 'field' },
-        H('label', 
+        H('label',
             H('div', {className: 'field-label'}, label),
             H('div', { className: 'field-value' }, input),
         ),
@@ -183,7 +183,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
         setState({ ...newState, loading: true });
     };
     const {
-        fileType = 'png',
+        fileType = 'jpeg',
         fontSize = '100px',
         theme = 'light',
         md = true,
