@@ -133,12 +133,6 @@ const fileTypeOptions: DropdownOption[] = [
     { text: 'JPEG', value: 'jpeg' },
 ];
 
-const fontSizeOptions: DropdownOption[] = Array
-    .from({ length: 10 })
-    .map((_, i) => i * 25)
-    .filter(n => n > 0)
-    .map(n => ({ text: n + 'px', value: n + 'px' }));
-
 const markdownOptions: DropdownOption[] = [
     { text: 'Plain Text', value: '0' },
     { text: 'Markdown', value: '1' },
@@ -184,7 +178,6 @@ const App = (_: any, state: AppState, setState: SetState) => {
     };
     const {
         fileType = 'jpeg',
-        fontSize = '100px',
         theme = 'light',
         md = true,
         text = '**Hello** World',
@@ -204,7 +197,6 @@ const App = (_: any, state: AppState, setState: SetState) => {
     url.pathname = `${encodeURIComponent(text)}.${fileType}`;
     url.searchParams.append('theme', theme);
     url.searchParams.append('md', mdValue);
-    url.searchParams.append('fontSize', fontSize);
     for (let image of images) {
         url.searchParams.append('images', image);
     }
@@ -239,14 +231,6 @@ const App = (_: any, state: AppState, setState: SetState) => {
                         options: fileTypeOptions,
                         value: fileType,
                         onchange: (val: FileType) => setLoadingState({ fileType: val })
-                    })
-                }),
-                H(Field, {
-                    label: 'Font Size',
-                    input: H(Dropdown, {
-                        options: fontSizeOptions,
-                        value: fontSize,
-                        onchange: (val: string) => setLoadingState({ fontSize: val })
                     })
                 }),
                 H(Field, {

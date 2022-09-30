@@ -14,7 +14,7 @@ const interBold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toStri
 const veraMono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('base64');
 const spaceGroteskMedium = readFileSync(`${__dirname}/../_fonts/SpaceGrotesk-Medium.woff2`).toString('base64');
 
-function getCss(theme: string, fontSize: string) {
+function getCss(theme: string) {
     let background = 'white';
     let foreground = 'black';
     let radial = 'lightgray';
@@ -194,7 +194,7 @@ function getCss(theme: string, fontSize: string) {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-    const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
+    const { text, theme, md, images, widths, heights } = parsedReq;
 
     return `
         <!DOCTYPE html>
@@ -203,7 +203,7 @@ export function getHtml(parsedReq: ParsedRequest) {
             <title>Generated Image</title>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <style>
-                ${getCss(theme, fontSize)}
+                ${getCss(theme)}
             </style>
             <body>
                 <div class="container">
