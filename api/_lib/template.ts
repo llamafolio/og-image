@@ -8,9 +8,11 @@ const twemoji = require('twemoji');
 const twOptions = { folder: 'svg', ext: '.svg' };
 const emojify = (text: string) => twemoji.parse(text, twOptions);
 
-const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString('base64');
-const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString('base64');
-const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('base64');
+const antebasBold = readFileSync(`${__dirname}/../_fonts/Antebas-Bold.woff2`).toString('base64');
+const interRegular = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString('base64');
+const interBold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString('base64');
+const veraMono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('base64');
+const spaceGroteskMedium = readFileSync(`${__dirname}/../_fonts/SpaceGrotesk-Medium.woff2`).toString('base64');
 
 function getCss(theme: string, fontSize: string) {
     let background = 'white';
@@ -25,30 +27,45 @@ function getCss(theme: string, fontSize: string) {
 
     return `
         @font-face {
-            font-family: 'Inter';
+            font-family: 'Antebas';
             font-style:  normal;
-            font-weight: normal;
-            src: url(data:font/woff2;charset=utf-8;base64,${rglr}) format('woff2');
+            font-weight: 700;
+            src: url(data:font/woff2;charset=utf-8;base64,${antebasBold}) format('woff2');
         }
 
         @font-face {
             font-family: 'Inter';
             font-style:  normal;
-            font-weight: bold;
-            src: url(data:font/woff2;charset=utf-8;base64,${bold}) format('woff2');
+            font-weight: 700;
+            src: url(data:font/woff2;charset=utf-8;base64,${interBold}) format('woff2');
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            font-style:  normal;
+            font-weight: 400;
+            src: url(data:font/woff2;charset=utf-8;base64,${interRegular}) format('woff2');
         }
 
         @font-face {
             font-family: 'Vera';
             font-style: normal;
-            font-weight: normal;
-            src: url(data:font/woff2;charset=utf-8;base64,${mono})  format("woff2");
+            font-weight: 400;
+            src: url(data:font/woff2;charset=utf-8;base64,${veraMono}) format("woff2");
+        }
+
+        @font-face {
+            font-family: 'Space Grotesk';
+            font-style: normal;
+            font-weight: 500;
+            src: url(data:font/woff2;charset=utf-8;base64,${spaceGroteskMedium}) format("woff2");
         }
 
         ${CSSReset}
 
         body {
             background: ${background};
+            font-family: 'Space Grotesk', sans-serif;
             height: 100vh;
             margin: 0;
             width: 100%;
@@ -100,7 +117,7 @@ function getCss(theme: string, fontSize: string) {
         }
 
         .content-title {
-            font-family: Antebas;
+            font-family: 'Antebas', sans-serif;
             font-size: 32px;
             font-weight: 700;
             line-height: 18px;
@@ -114,7 +131,7 @@ function getCss(theme: string, fontSize: string) {
         }
 
         .content-value {
-            font-family: Inter;
+            font-family: 'Inter', sans-serif;
             font-size: 116px;
             font-weight: 700;
             margin-right: 12px;
@@ -132,7 +149,7 @@ function getCss(theme: string, fontSize: string) {
         }
 
         .content-value-change {
-            font-family: Antebas;
+            font-family: 'Antebas', sans-serif;
             font-size: 18px;
             font-weight: 700;
             margin-left: 4px;
@@ -141,7 +158,7 @@ function getCss(theme: string, fontSize: string) {
 
         .content-value-percent {
             color: #23E895;
-            font-family: Inter;
+            font-family: 'Inter', sans-serif;
             font-size: 43px;
             font-weight: 700;
         }
@@ -178,6 +195,7 @@ function getCss(theme: string, fontSize: string) {
 
 export function getHtml(parsedReq: ParsedRequest) {
     const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
+    console.log(getCss(theme, fontSize))
     return `<!DOCTYPE html>
 <html>
     <meta charset="utf-8">
