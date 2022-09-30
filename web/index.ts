@@ -172,7 +172,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
         fileType = 'jpeg',
         theme = 'light',
         md = false,
-        text = '**Hello** World',
+        title = 'Wallet Balance',
         images=[imageLightOptions[0].value],
         showToast = false,
         messageToast = '',
@@ -185,7 +185,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
     const imageOptions = theme === 'light' ? imageLightOptions : imageDarkOptions;
     const url = new URL(window.location.origin);
 
-    url.pathname = `${encodeURIComponent(text)}.${fileType}`;
+    url.pathname = `${encodeURIComponent(title)}.${fileType}`;
     url.searchParams.append('theme', theme);
     url.searchParams.append('md', mdValue);
 
@@ -243,12 +243,11 @@ const App = (_: any, state: AppState, setState: SetState) => {
                     })
                 }),
                 H(Field, {
-                    label: 'Text Input',
+                    label: 'Title',
                     input: H(TextInput, {
-                        value: text,
+                        value: title,
                         oninput: (val: string) => {
-                            console.log('oninput ' + val);
-                            setLoadingState({ text: val, overrideUrl: url });
+                            setLoadingState({ title: val, overrideUrl: url });
                         }
                     })
                 }),

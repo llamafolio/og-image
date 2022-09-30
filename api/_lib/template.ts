@@ -16,13 +16,11 @@ const spaceGroteskMedium = readFileSync(`${__dirname}/../_fonts/SpaceGrotesk-Med
 
 function getCss(theme: string) {
     let background = 'white';
-    let foreground = 'black';
-    let radial = 'lightgray';
+    // let foreground = 'black';
 
     if (theme === 'dark') {
         background = 'black';
-        foreground = 'white';
-        radial = 'dimgray';
+        // foreground = 'white';
     }
 
     return `
@@ -194,7 +192,7 @@ function getCss(theme: string) {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-    const { text, theme, md, images } = parsedReq;
+    const { title, theme, md, images } = parsedReq;
 
     return `
         <!DOCTYPE html>
@@ -212,7 +210,9 @@ export function getHtml(parsedReq: ParsedRequest) {
                     </div>
 
                     <div class="main">
-                        <p class="content-title">Wallet Balance</p>
+                        <p class="content-title">
+                            ${emojify(md ? marked(title) : sanitizeHtml(title))}
+                        </p>
 
                         <div class="content-container">
                             <p class="content-value">

@@ -12,25 +12,29 @@ export function parseRequest(req: IncomingMessage) {
     }
 
     const arr = (pathname || '/').slice(1).split('.');
+
     let extension = '';
-    let text = '';
+    let title = '';
+
     if (arr.length === 0) {
-        text = '';
+        title = '';
     } else if (arr.length === 1) {
-        text = arr[0];
+        title = arr[0];
     } else {
         extension = arr.pop() as string;
-        text = arr.join('.');
+        title = arr.join('.');
     }
 
     const parsedRequest: ParsedRequest = {
         fileType: extension === 'jpeg' ? extension : 'png',
-        text: decodeURIComponent(text),
+        title: decodeURIComponent(title),
         theme: theme === 'dark' ? 'dark' : 'light',
         md: md === '1' || md === 'true',
         images: getArray(images),
     };
+
     parsedRequest.images = getDefaultImages(parsedRequest.images, parsedRequest.theme);
+
     return parsedRequest;
 }
 
