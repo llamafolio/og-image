@@ -194,7 +194,7 @@ function getCss(theme: string) {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-    const { text, theme, md, images, widths, heights } = parsedReq;
+    const { text, theme, md, images } = parsedReq;
 
     return `
         <!DOCTYPE html>
