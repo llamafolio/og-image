@@ -66,7 +66,7 @@ function getCss(theme: string, fontSize: string) {
         }
 
         .container {
-            background-image: url('https://splendid-rabanadas-e1e3b7.netlify.app/static/images/og-image-service/card-bg.svg');
+            background-image: url('https://llamafolio.com/static/images/og-image-service/card-bg.svg');
             -webkit-background-position: center;
             background-position: center;
             background-repeat: no-repeat;
@@ -214,7 +214,7 @@ export function getHtml(parsedReq: ParsedRequest) {
     <body>
         <div class="container">
             <div class="header">
-                <img src="https://splendid-rabanadas-e1e3b7.netlify.app/static/images/og-image-service/llamafolio-logo.svg" class="logo">
+                <img src="https://llamafolio.com/static/images/og-image-service/llamafolio-logo.svg" class="logo">
             </div>
 
             <div class="main">
@@ -233,7 +233,7 @@ export function getHtml(parsedReq: ParsedRequest) {
             </div>
 
             <div class="footer">
-                <img src="https://splendid-rabanadas-e1e3b7.netlify.app/static/images/og-image-service/info-icon.svg" class="footer-icon">
+                <img src="https://llamafolio.com/static/images/og-image-service/info-icon.svg" class="footer-icon">
                 <p class="footer-description">LlamaFolio is committed to transparency &amp; proving accurate data without advertisements or sponsored content. Learn more at: llamafolio.com</p>
             </div>
         </div>
