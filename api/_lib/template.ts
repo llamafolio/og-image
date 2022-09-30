@@ -67,7 +67,6 @@ function getCss(theme: string, fontSize: string) {
 
         .container {
             background-image: url('https://llamafolio.com/static/images/og-image-service/card-bg.svg');
-            -webkit-background-position: center;
             background-position: center;
             background-repeat: no-repeat;
             height: 630px;
@@ -87,15 +86,10 @@ function getCss(theme: string, fontSize: string) {
         }
 
         .main {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
             display: flex;
             background: #2F332C;
             border-top-right-radius: 16px;
             color: #FFF;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
             flex-direction: column;
             height: 239px;
             padding-left: 49px;
@@ -115,13 +109,7 @@ function getCss(theme: string, fontSize: string) {
         }
 
         .content-container {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
             display: flex;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
             align-items: center;
         }
 
@@ -138,12 +126,7 @@ function getCss(theme: string, fontSize: string) {
         }
 
         .content-value-container {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
             display: flex;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
             flex-direction: column;
             margin-top: 24px;
         }
@@ -164,13 +147,7 @@ function getCss(theme: string, fontSize: string) {
         }
 
         .footer {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
             display: flex;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
             align-items: center;
             background: #2F332C;
             border-bottom-right-radius: 16px;
@@ -178,9 +155,7 @@ function getCss(theme: string, fontSize: string) {
             height: 77px;
             opacity: 0.9;
             position: absolute;
-            -webkit-padding-start: 16px;
             padding-inline-start: 16px;
-            -webkit-padding-end: 16px;
             padding-inline-end: 16px;
             top: 542.45px;
             width: 771px;
