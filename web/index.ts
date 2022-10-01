@@ -174,6 +174,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
         md = false,
         title = 'Wallet Balance',
         balance = '5.65b',
+        volumeChange = '+1.65%',
         images=[imageLightOptions[0].value],
         showToast = false,
         messageToast = '',
@@ -190,6 +191,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
     url.searchParams.append('theme', theme);
     url.searchParams.append('md', mdValue);
     balance && url.searchParams.append('balance', balance);
+    volumeChange && url.searchParams.append('volumeChange', volumeChange);
 
     for (let image of images) {
         url.searchParams.append('images', image);
@@ -259,6 +261,15 @@ const App = (_: any, state: AppState, setState: SetState) => {
                         value: balance,
                         oninput: (val: string) => {
                             setLoadingState({ balance: val, overrideUrl: url });
+                        }
+                    })
+                }),
+                H(Field, {
+                    label: 'Volume Change',
+                    input: H(TextInput, {
+                        value: volumeChange,
+                        oninput: (val: string) => {
+                            setLoadingState({ volumeChange: val, overrideUrl: url });
                         }
                     })
                 }),

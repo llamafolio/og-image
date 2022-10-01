@@ -192,7 +192,7 @@ function getCss(theme: string) {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-    const { title, theme, md, images, balance } = parsedReq;
+    const { title, theme, md, images, balance, volumeChange } = parsedReq;
 
     return `
         <!DOCTYPE html>
@@ -221,7 +221,7 @@ export function getHtml(parsedReq: ParsedRequest) {
 
                             <div class="content-value-container">
                                 <p class="content-value-change">24 hour change</p>
-                                <p class="content-value-percent">+ 1.65%</p>
+                                <p class="content-value-percent">${sanitizeHtml(volumeChange)}</p>
                             </div>
                         </div>
                     </div>

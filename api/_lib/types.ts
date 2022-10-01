@@ -6,6 +6,7 @@ export interface ParsedRequest {
     fileType: FileType;
     title: string;
     balance: string;
+    volumeChange: string;
     md: boolean;
     images: string[];
 }
