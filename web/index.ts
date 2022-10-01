@@ -173,6 +173,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
         theme = 'light',
         md = false,
         title = 'Wallet Balance',
+        balance = '5.65b',
         images=[imageLightOptions[0].value],
         showToast = false,
         messageToast = '',
@@ -188,6 +189,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
     url.pathname = `${encodeURIComponent(title)}.${fileType}`;
     url.searchParams.append('theme', theme);
     url.searchParams.append('md', mdValue);
+    balance && url.searchParams.append('balance', balance);
 
     for (let image of images) {
         url.searchParams.append('images', image);
@@ -248,6 +250,15 @@ const App = (_: any, state: AppState, setState: SetState) => {
                         value: title,
                         oninput: (val: string) => {
                             setLoadingState({ title: val, overrideUrl: url });
+                        }
+                    })
+                }),
+                H(Field, {
+                    label: 'Balance',
+                    input: H(TextInput, {
+                        value: balance,
+                        oninput: (val: string) => {
+                            setLoadingState({ balance: val, overrideUrl: url });
                         }
                     })
                 }),

@@ -192,7 +192,7 @@ function getCss(theme: string) {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-    const { title, theme, md, images } = parsedReq;
+    const { title, theme, md, images, balance } = parsedReq;
 
     return `
         <!DOCTYPE html>
@@ -216,7 +216,7 @@ export function getHtml(parsedReq: ParsedRequest) {
 
                         <div class="content-container">
                             <p class="content-value">
-                                <span class="content-value-symbol">$</span>5.65b
+                                <span class="content-value-symbol">$</span>${sanitizeHtml(balance)}
                             </p>
 
                             <div class="content-value-container">
