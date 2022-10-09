@@ -77,15 +77,6 @@ const TextInput = ({ value, oninput, small, type = 'text', placeholder = '' }: T
     );
 }
 
-// interface ButtonProps {
-//     label: string;
-//     onclick: () => void;
-// }
-
-// const Button = ({ label, onclick }: ButtonProps) => {
-//     return H('button', { onclick }, label);
-// }
-
 interface FieldProps {
     label: string;
     input: any;
@@ -169,18 +160,18 @@ const App = (_: any, state: AppState, setState: SetState) => {
         setState({ ...newState, loading: true });
     };
     const {
-        fileType = 'jpeg',
-        theme = 'light',
-        md = false,
-        title = 'Wallet Balance',
         balance = '5.65b',
-        volumeChange = '+1.65%',
+        fileType = 'jpeg',
         images=[imageLightOptions[0].value],
-        showToast = false,
-        messageToast = '',
         loading = true,
-        selectedImageIndex = 0,
+        md = false,
+        messageToast = '',
+        theme = 'light',
+        title = 'Wallet Balance',
         overrideUrl = null,
+        selectedImageIndex = 0,
+        showToast = false,
+        volumeChange = '+1.65%',
     } = state;
 
     const mdValue = md ? '1' : '0';

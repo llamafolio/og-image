@@ -192,13 +192,13 @@ function getCss(theme: string) {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-    const { title, theme, md, images, balance, volumeChange } = parsedReq;
+    const { balance, images, md, theme, title, volumeChange } = parsedReq;
 
     return `
         <!DOCTYPE html>
         <html>
             <meta charset="utf-8">
-            <title>Generated Image</title>
+            <title>Generated Image - Wallet Balance</title>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <style>
                 ${getCss(theme)}

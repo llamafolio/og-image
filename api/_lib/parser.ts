@@ -5,7 +5,7 @@ import { ParsedRequest, Theme } from './types';
 export function parseRequest(req: IncomingMessage) {
     console.log('HTTP ' + req.url);
     const { pathname, query } = parse(req.url || '/', true);
-    const { images, theme, md, balance, volumeChange } = (query || {});
+    const { balance, images, md, theme, volumeChange } = (query || {});
 
     if (Array.isArray(theme)) {
         throw new Error('Expected a single theme');
@@ -26,13 +26,13 @@ export function parseRequest(req: IncomingMessage) {
     }
 
     const parsedRequest: ParsedRequest = {
-        fileType: extension === 'jpeg' ? extension : 'png',
-        title: decodeURIComponent(title),
         balance: getString(balance),
-        volumeChange: getString(volumeChange),
-        theme: theme === 'dark' ? 'dark' : 'light',
-        md: md === '1' || md === 'true',
+        fileType: extension === 'jpeg' ? extension : 'png',
         images: getArray(images),
+        md: md === '1' || md === 'true',
+        theme: theme === 'dark' ? 'dark' : 'light',
+        title: decodeURIComponent(title),
+        volumeChange: getString(volumeChange),
     };
 
     parsedRequest.images = getDefaultImages(parsedRequest.images, parsedRequest.theme);
