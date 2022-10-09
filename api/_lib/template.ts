@@ -2,7 +2,7 @@ import { readFileSync } from 'fs';
 import { marked } from 'marked';
 import { sanitizeHtml } from './sanitizer';
 import { ParsedRequest } from './types';
-import { CSSReset } from "./css-reset";
+import { CSSReset } from './css-reset';
 
 const twemoji = require('twemoji');
 const twOptions = { folder: 'svg', ext: '.svg' };
@@ -49,14 +49,14 @@ function getCss(theme: string, isChangePositive: boolean) {
             font-family: 'Vera';
             font-style: normal;
             font-weight: 400;
-            src: url(data:font/woff2;charset=utf-8;base64,${veraMono}) format("woff2");
+            src: url(data:font/woff2;charset=utf-8;base64,${veraMono}) format('woff2');
         }
 
         @font-face {
             font-family: 'Space Grotesk';
             font-style: normal;
             font-weight: 500;
-            src: url(data:font/woff2;charset=utf-8;base64,${spaceGroteskMedium}) format("woff2");
+            src: url(data:font/woff2;charset=utf-8;base64,${spaceGroteskMedium}) format('woff2');
         }
 
         ${CSSReset}
@@ -194,8 +194,8 @@ function getCss(theme: string, isChangePositive: boolean) {
 export function getHtml(parsedReq: ParsedRequest) {
     const { balance, images, md, theme, title, volumeChange } = parsedReq;
 
-    const isChangePositive = volumeChange?.includes("+") ?? false;
-    const isChangeNegative = volumeChange?.includes("-") ?? false;
+    const isChangePositive = volumeChange?.includes('+') ?? false;
+    const isChangeNegative = volumeChange?.includes('-') ?? false;
 
     let trend: string;
 
