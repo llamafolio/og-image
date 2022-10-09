@@ -14,7 +14,7 @@ const interBold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toStri
 const veraMono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('base64');
 const spaceGroteskMedium = readFileSync(`${__dirname}/../_fonts/SpaceGrotesk-Medium.woff2`).toString('base64');
 
-function getCss(theme: string) {
+function getCss(theme: string, isChangePositive: boolean) {
     let background = 'white';
     // let foreground = 'black';
 
@@ -155,7 +155,7 @@ function getCss(theme: string) {
         }
 
         .content-value-percent {
-            color: #23E895;
+            color: ${isChangePositive ? '#23E895' : '#FF3F28'};
             font-family: 'Inter', sans-serif;
             font-size: 43px;
             font-weight: 700;
@@ -194,6 +194,19 @@ function getCss(theme: string) {
 export function getHtml(parsedReq: ParsedRequest) {
     const { balance, images, md, theme, title, volumeChange } = parsedReq;
 
+    const isChangePositive = volumeChange?.includes("+") ?? false;
+    const isChangeNegative = volumeChange?.includes("-") ?? false;
+
+    let trend: string;
+
+    if (isChangePositive) {
+        trend = `+${volumeChange.split('+').join('')}`
+    } else if (isChangeNegative) {
+        trend = `-${volumeChange.split('-').join('')}`
+    } else {
+        trend = volumeChange || '';
+    }
+
     return `
         <!DOCTYPE html>
         <html>
@@ -201,7 +214,7 @@ export function getHtml(parsedReq: ParsedRequest) {
             <title>Generated Image - Wallet Balance</title>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <style>
-                ${getCss(theme)}
+                ${getCss(theme, isChangePositive)}
             </style>
             <body>
                 <div class="container">
@@ -221,7 +234,7 @@ export function getHtml(parsedReq: ParsedRequest) {
 
                             <div class="content-value-container">
                                 <p class="content-value-change">24 hour change</p>
-                                <p class="content-value-percent">${sanitizeHtml(volumeChange)}</p>
+                                <p class="content-value-percent">${sanitizeHtml(trend)}</p>
                             </div>
                         </div>
                     </div>
