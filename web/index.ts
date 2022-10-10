@@ -162,6 +162,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
     const {
         balance = '5.65b',
         fileType = 'png',
+        footerURL = 'llamafolio.com',
         images=[imageLightOptions[0].value],
         loading = true,
         md = false,
@@ -183,6 +184,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
     url.searchParams.append('md', mdValue);
     balance && url.searchParams.append('balance', balance);
     volumeChange && url.searchParams.append('volumeChange', volumeChange);
+    footerURL && url.searchParams.append('footerURL', encodeURIComponent(footerURL));
 
     for (let image of images) {
         url.searchParams.append('images', image);
@@ -261,6 +263,15 @@ const App = (_: any, state: AppState, setState: SetState) => {
                         value: volumeChange,
                         oninput: (val: string) => {
                             setLoadingState({ volumeChange: val, overrideUrl: url });
+                        }
+                    })
+                }),
+                H(Field, {
+                    label: 'Footer URL',
+                    input: H(TextInput, {
+                        value: footerURL,
+                        oninput: (val: string) => {
+                            setLoadingState({ footerURL: val, overrideUrl: url });
                         }
                     })
                 }),

@@ -192,7 +192,7 @@ function getCss(theme: string, isChangePositive: boolean) {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-    const { balance, images, md, theme, title, volumeChange } = parsedReq;
+    const { balance, footerURL, images, md, theme, title, volumeChange } = parsedReq;
 
     const isChangePositive = volumeChange?.includes('+') ?? false;
     const isChangeNegative = volumeChange?.includes('-') ?? false;
@@ -241,7 +241,12 @@ export function getHtml(parsedReq: ParsedRequest) {
 
                     <div class="footer">
                         <img src="https://llamafolio.com/static/images/og-image-service/info-icon.svg" class="footer-icon">
-                        <p class="footer-description">LlamaFolio is committed to transparency &amp; proving accurate data without advertisements or sponsored content. Learn more at: llamafolio.com</p>
+                        <p class="footer-description">
+                            LlamaFolio is committed to transparency &amp; proving accurate data without advertisements or sponsored content. Learn more at:
+                            ${emojify(
+                                md ? marked(footerURL) : sanitizeHtml(footerURL || 'llamafolio.com')
+                            )}
+                        </p>
                     </div>
                 </div>
             </body>

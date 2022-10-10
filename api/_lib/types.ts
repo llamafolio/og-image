@@ -4,6 +4,7 @@ export type Theme = 'light' | 'dark';
 export interface ParsedRequest {
     balance: string;
     fileType: FileType;
+    footerURL: string;
     images: string[];
     md: boolean;
     theme: Theme;
