@@ -161,7 +161,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
     };
     const {
         balance = '5.65b',
-        fileType = 'jpeg',
+        fileType = 'png',
         images=[imageLightOptions[0].value],
         loading = true,
         md = false,
