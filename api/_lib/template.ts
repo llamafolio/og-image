@@ -211,7 +211,7 @@ export function getHtml(parsedReq: ParsedRequest) {
         <!DOCTYPE html>
         <html>
             <meta charset="utf-8">
-            <title>Generated Image - Wallet Balance</title>
+            <title>Generated Image</title>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <style>
                 ${getCss(theme, isChangePositive)}
